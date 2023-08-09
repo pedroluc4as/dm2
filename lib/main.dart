@@ -16,8 +16,24 @@ class PaginaInicial extends StatelessWidget {
         '/': (context) => Home(),
         '/contador': (context) => Contador(),
         '/curtir': (context) => Curtir(),
+        '/singup': (context) => Singup(),
       },
       theme: ThemeData.dark(),
+    );
+  }
+}
+
+class Singup extends StatelessWidget {
+  const Singup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("Sing Up"),
+      ),
     );
   }
 }
@@ -115,7 +131,20 @@ class Home extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, '/curtir');
             },
-          )
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.person_add,
+              size: 36,
+              color: Color.fromARGB(255, 255, 0, 0),
+            ),
+            title: Text("Sing Up"),
+            subtitle: Text(""),
+            trailing: Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.pushNamed(context, '/singup');
+            },
+          ),
         ],
       ),
     );
