@@ -136,7 +136,7 @@ class Home extends StatelessWidget {
             leading: Icon(
               Icons.person_add,
               size: 36,
-              color: Color.fromARGB(255, 255, 0, 0),
+              color: Color.fromARGB(255, 0, 26, 255),
             ),
             title: Text("Sing Up"),
             subtitle: Text(""),
