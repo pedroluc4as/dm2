@@ -21,6 +21,7 @@ class Meuapp extends StatelessWidget {
         '/contador': (context) => Contador(),
         '/curtir': (context) => Curtir(),
         '/singup': (context) => Singup(),
+        '/home':(context) => Home(),
       },
       theme: ThemeData.dark(),
     );
