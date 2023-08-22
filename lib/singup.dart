@@ -2,9 +2,19 @@
 
 import 'package:flutter/material.dart';
 
-class Singup extends StatelessWidget {
+class Singup extends StatefulWidget {
   const Singup({super.key});
 
+  @override
+  State<Singup> createState() => _SingupState();
+}
+
+class _SingupState extends State<Singup> {
+  var nomeController = TextEditingController();
+  var emailController = TextEditingController();
+  var senhaController = TextEditingController();
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +27,7 @@ class Singup extends StatelessWidget {
         padding: EdgeInsets.all(18),
         children: [
           TextFormField(
+            controller: nomeController,
             cursorColor: Color.fromARGB(255, 0, 26, 255),
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.person),
@@ -29,6 +40,7 @@ class Singup extends StatelessWidget {
           SizedBox(height: 20),
 
           TextFormField(
+            controller: emailController,
             cursorColor: Color.fromARGB(255, 0, 26, 255),
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.email_outlined),
@@ -41,6 +53,7 @@ class Singup extends StatelessWidget {
           SizedBox(height: 20),
 
           TextFormField(
+            controller: senhaController,
             cursorColor: Color.fromARGB(255, 0, 26, 255),
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.lock_outline),
@@ -52,19 +65,6 @@ class Singup extends StatelessWidget {
 
           SizedBox(height: 20),
           
-
-          TextFormField(
-            cursorColor: Color.fromARGB(255, 0, 26, 255),
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.lock_outline),
-              hintText: "Type your password again",
-              label: Text("Type your password again"),
-              border: OutlineInputBorder(),
-            ),
-          ),
-
-        SizedBox(height: 20),
-
           TextFormField(
             cursorColor: Color.fromARGB(255, 0, 26, 255),
             decoration: InputDecoration(
@@ -90,7 +90,12 @@ class Singup extends StatelessWidget {
 
           SizedBox(height: 30),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              print("The button has pressed");
+              print(nomeController.text);
+              print(emailController.text);
+              print(senhaController.text);
+            },
             child: Text("Save"),
             style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromARGB(255, 0, 26, 255),
