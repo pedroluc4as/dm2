@@ -6,6 +6,7 @@ import 'counter.dart';
 import 'home.dart';
 import 'like.dart';
 import 'singup.dart';
+import 'login.dart';
 
 void main() {
   runApp(Meuapp());
@@ -28,6 +29,7 @@ class Meuapp extends StatelessWidget {
         '/curtir': (context) => Curtir(),
         '/singup': (context) => Singup(),
         '/home':(context) => Home(),
+        '/login': (context) => Login()
       },
       theme: ThemeData.dark(),
     );

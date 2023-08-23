@@ -2,18 +2,17 @@
 
 import 'package:flutter/material.dart';
 
-class Singup extends StatefulWidget {
-  const Singup({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<Singup> createState() => _SingupState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SingupState extends State<Singup> {
-  var nomeController = TextEditingController();
+class _LoginState extends State<Login> {
   var emailController = TextEditingController();
   var senhaController = TextEditingController();
-
+  
   
   @override
   Widget build(BuildContext context) {
@@ -21,24 +20,11 @@ class _SingupState extends State<Singup> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text("Sing Up"),
+        title: Text("Login"),
       ),
       body: ListView(
         padding: EdgeInsets.all(18),
         children: [
-          TextFormField(
-            controller: nomeController,
-            cursorColor: Color.fromARGB(255, 0, 26, 255),
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.person),
-              hintText: "Type your name",
-              label: Text("Type your name"),
-              border: OutlineInputBorder(),
-            ),
-          ),
-
-          SizedBox(height: 20),
-
           TextFormField(
             controller: emailController,
             cursorColor: Color.fromARGB(255, 0, 26, 255),
@@ -63,33 +49,10 @@ class _SingupState extends State<Singup> {
             ),
           ),
 
-          SizedBox(height: 20),
-          
-          TextFormField(
-            cursorColor: Color.fromARGB(255, 0, 26, 255),
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.calendar_month_outlined),
-              hintText: "Type your birth",
-              label: Text("Type your birth"),
-              border: OutlineInputBorder(),
-            ),
-            onTap: () {
-              showDatePicker(
-              context: context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime(1900,1,1),
-              lastDate: DateTime.now(),
-              );
-            },
-          ),
-
-          SizedBox(height: 20),
-
           SizedBox(height: 30),
           ElevatedButton(
             onPressed: () {
               print("The button has pressed");
-              print(nomeController.text);
               print(emailController.text);
               print(senhaController.text);
             },

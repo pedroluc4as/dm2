@@ -54,6 +54,19 @@ class Home extends StatelessWidget {
               Navigator.pushNamed(context, '/singup');
             },
           ),
+          ListTile(
+            leading: Icon(
+              Icons.login,
+              size: 36,
+              color: Color.fromARGB(255, 255, 230, 0),
+            ),
+            title: Text("Login"),
+            subtitle: Text(""),
+            trailing: Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.pushNamed(context, '/login');
+            },
+          ),
         ],
       ),
     );
