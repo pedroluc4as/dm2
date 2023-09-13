@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, avoid_print, sort_child_properties_last, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Contador extends StatefulWidget {
   const Contador({super.key});
@@ -14,6 +15,29 @@ class Contador extends StatefulWidget {
 
 class _ContadorState extends State<Contador> {
   int x = 0;
+  
+  @override
+  void initState() {
+    super.initState();
+    obtemValor(); //lê da memória hora que abre 
+  }
+
+  void obtemValor() async {
+    //busca um valor da memória persistente
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      x = prefs.getInt('counter') ?? 0;
+    });
+    
+  }
+
+  void salvaValor(int valor) async {
+    //salva um valor na mémoria persistente
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setInt('counter', valor);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +66,7 @@ class _ContadorState extends State<Contador> {
                     setState(() {
                       x = x + 1;
                     });
+                    salvaValor(x); //manda persistir o x
                   },
                   child: Text("+1"),
                   style: ElevatedButton.styleFrom(
@@ -52,6 +77,7 @@ class _ContadorState extends State<Contador> {
                     setState(() {
                       x = x - 1;
                     });
+                    salvaValor(x); //manda persistir o x
                   },
                   child: Text("-1"),
                   style: ElevatedButton.styleFrom(
@@ -67,6 +93,7 @@ class _ContadorState extends State<Contador> {
                     setState(() {
                       x = x + 100;
                     });
+                    salvaValor(x);
                   },
                   child: Text("+100"),
                   style: ElevatedButton.styleFrom(
@@ -77,6 +104,7 @@ class _ContadorState extends State<Contador> {
                     setState(() {
                       x = x - 100;
                     });
+                    salvaValor(x);
                   },
                   child: Text("-100"),
                   style: ElevatedButton.styleFrom(
@@ -89,6 +117,7 @@ class _ContadorState extends State<Contador> {
                 setState(() {
                   x = 0;
                 });
+                salvaValor(x);
               },
               child: Text("RESET"),
               style: ElevatedButton.styleFrom(
