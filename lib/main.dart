@@ -21,20 +21,16 @@ class Meuapp extends StatelessWidget {
       supportedLocales: [
         Locale('pt', 'BR'),
       ],
-      localizationsDelegates:
-      GlobalMaterialLocalizations.delegates,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       routes: {
         '/': (context) => Home(),
         '/contador': (context) => Contador(),
         '/curtir': (context) => Curtir(),
         '/singup': (context) => Singup(),
-        '/home':(context) => Home(),
+        '/home': (context) => Home(),
         '/login': (context) => Login()
       },
       theme: ThemeData.dark(),
     );
   }
 }
-
-
-

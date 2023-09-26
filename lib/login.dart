@@ -12,8 +12,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   var emailController = TextEditingController();
   var senhaController = TextEditingController();
-  
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +34,7 @@ class _LoginState extends State<Login> {
               border: OutlineInputBorder(),
             ),
           ),
-
           SizedBox(height: 20),
-
           TextFormField(
             controller: senhaController,
             cursorColor: Color.fromARGB(255, 0, 26, 255),
@@ -48,7 +45,6 @@ class _LoginState extends State<Login> {
               border: OutlineInputBorder(),
             ),
           ),
-
           SizedBox(height: 30),
           ElevatedButton(
             onPressed: () {
@@ -60,7 +56,7 @@ class _LoginState extends State<Login> {
             style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromARGB(255, 0, 26, 255),
             ),
-),
+          ),
           ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/home');
@@ -68,10 +64,8 @@ class _LoginState extends State<Login> {
             child: Text("Cancel"),
             style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromARGB(255, 255, 0, 0),
-              
             ),
-),
-          
+          ),
         ],
       ),
     );

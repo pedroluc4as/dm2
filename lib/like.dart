@@ -14,9 +14,10 @@ class _CurtirState extends State<Curtir> {
   int x = 0;
 
   @override
-  void initState() { //roda na hora que abre
+  void initState() {
+    //roda na hora que abre
     super.initState();
-    obtemValor(); //lê da memória hora que abre 
+    obtemValor(); //lê da memória hora que abre
   }
 
   void obtemValor() async {
@@ -26,18 +27,17 @@ class _CurtirState extends State<Curtir> {
       x = prefs.getInt('counter') ?? 0;
       curtiu = prefs.getBool('curtiu') ?? false;
     });
-    
   }
 
   void salvaValor(int valor, bool curt) async {
     //salva um valor na mémoria persistente
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setInt('counter', valor);
-        prefs.setBool('curtiu', curt);
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setInt('counter', valor);
+    prefs.setBool('curtiu', curt);
   }
 
   @override
-   build(BuildContext context) {
+  build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -58,10 +58,14 @@ class _CurtirState extends State<Curtir> {
             ),
             IconButton(
               iconSize: 100,
-              icon: curtiu == true 
-              ? Icon(Icons.favorite, color: Colors.red,)//?= IF (SE O VALOR FOR VERDADEIRO)
-              : Icon(Icons.favorite_outline, color: Colors.white),//:= ELSE(SE O VALOR FOR)
-                  color: curtiu == true ? Colors.red : Colors.white,
+              icon: curtiu == true
+                  ? Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    ) //?= IF (SE O VALOR FOR VERDADEIRO)
+                  : Icon(Icons.favorite_outline,
+                      color: Colors.white), //:= ELSE(SE O VALOR FOR)
+              color: curtiu == true ? Colors.red : Colors.white,
               onPressed: () {
                 setState(() {
                   curtiu = true;

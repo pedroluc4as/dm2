@@ -15,11 +15,11 @@ class Contador extends StatefulWidget {
 
 class _ContadorState extends State<Contador> {
   int x = 0;
-  
+
   @override
   void initState() {
     super.initState();
-    obtemValor(); //lê da memória hora que abre 
+    obtemValor(); //lê da memória hora que abre
   }
 
   void obtemValor() async {
@@ -28,15 +28,13 @@ class _ContadorState extends State<Contador> {
     setState(() {
       x = prefs.getInt('counter') ?? 0;
     });
-    
   }
 
   void salvaValor(int valor) async {
     //salva um valor na mémoria persistente
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setInt('counter', valor);
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setInt('counter', valor);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -128,4 +126,4 @@ class _ContadorState extends State<Contador> {
       ),
     );
   }
-  }
+}

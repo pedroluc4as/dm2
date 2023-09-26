@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, avoid_print, sort_child_properties_last, prefer_const_literals_to_create_immutables
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 class Singup extends StatefulWidget {
@@ -14,7 +14,27 @@ class _SingupState extends State<Singup> {
   var emailController = TextEditingController();
   var senhaController = TextEditingController();
 
-  
+  @override
+  void initState() {
+    super.initState();
+    obtemDados();
+  }
+
+  void salvaDados() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('nome', nomeController.text);
+    prefs.setString('email', emailController.text);
+    prefs.setString('senha', senhaController.text);
+  }
+
+  void obtemDados() async {
+    //busca um valor da memória persistente
+    final prefs = await SharedPreferences.getInstance();
+    nomeController.text = prefs.getString('nome') ?? '';
+    emailController.text = prefs.getString('email') ?? '';
+    senhaController.text = prefs.getString('senha') ?? '';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +56,7 @@ class _SingupState extends State<Singup> {
               border: OutlineInputBorder(),
             ),
           ),
-
           SizedBox(height: 20),
-
           TextFormField(
             controller: emailController,
             cursorColor: Color.fromARGB(255, 0, 26, 255),
@@ -49,9 +67,7 @@ class _SingupState extends State<Singup> {
               border: OutlineInputBorder(),
             ),
           ),
-
           SizedBox(height: 20),
-
           TextFormField(
             controller: senhaController,
             cursorColor: Color.fromARGB(255, 0, 26, 255),
@@ -62,9 +78,7 @@ class _SingupState extends State<Singup> {
               border: OutlineInputBorder(),
             ),
           ),
-
           SizedBox(height: 20),
-          
           TextFormField(
             cursorColor: Color.fromARGB(255, 0, 26, 255),
             decoration: InputDecoration(
@@ -75,16 +89,14 @@ class _SingupState extends State<Singup> {
             ),
             onTap: () {
               showDatePicker(
-              context: context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime(1900,1,1),
-              lastDate: DateTime.now(),
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(1900, 1, 1),
+                lastDate: DateTime.now(),
               );
             },
           ),
-
           SizedBox(height: 20),
-
           SizedBox(height: 30),
           ElevatedButton(
             onPressed: () {
@@ -92,12 +104,13 @@ class _SingupState extends State<Singup> {
               print(nomeController.text);
               print(emailController.text);
               print(senhaController.text);
+              salvaDados();
             },
             child: Text("Save"),
             style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromARGB(255, 0, 26, 255),
             ),
-),
+          ),
           ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/home');
@@ -105,10 +118,8 @@ class _SingupState extends State<Singup> {
             child: Text("Cancel"),
             style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromARGB(255, 255, 0, 0),
-              
             ),
-),
-          
+          ),
         ],
       ),
     );
